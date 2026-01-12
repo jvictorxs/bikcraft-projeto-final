@@ -1,6 +1,7 @@
 /* GLOBAL */
 @import "./global/header.css";
 @import "./global/global.css";
+@import "./global/footer.css";
 
 /* UTILIDADES */
 @import "./utilidades/componentes.css";
@@ -19,6 +20,5 @@
 /* SEGUROS */
 @import "./seguros/seguros.css";
 
-/* FOOTER */
-
-@import "./global/footer.css";
+/* TERMOS */
+@import "./termos/termos.css";
