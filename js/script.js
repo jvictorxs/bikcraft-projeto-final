@@ -32,16 +32,19 @@ parametros.forEach(ativarProduto);
 const perguntas = document.querySelectorAll(".perguntas button");
 
 function ativarPergunta(e) {
+  //pegar o valor do item clicado
   const pergunta = e.currentTarget;
+  //pega o atributo do aria-controls
   const controls = pergunta.getAttribute("aria-controls");
+  //pega o id do elemento filho do aria-controls com o mesmo nome
   const resposta = document.getElementById(controls);
 
+  //adiciona ou remove a classe 'ativa
   resposta.classList.toggle("ativa");
-  const ativa = resposta.classList.contains("ativa")
-  pergunta.setAttribute("aria-expanded", ativa)
-  console.log(resposta);
-  console.log(controls);
-  console.log(pergunta);
+  //verifica se contem a a classe 'ativa'
+  const ativa = resposta.classList.contains("ativa");
+  //define um novo valor para aria-expanded com o ativo q nesse caso é booleano
+  pergunta.setAttribute("aria-expanded", ativa);
 }
 
 function eventosPerguntas(pergunta) {
@@ -50,4 +53,23 @@ function eventosPerguntas(pergunta) {
 
 perguntas.forEach(eventosPerguntas);
 
-console.log(perguntas);
+//--------------------Galeria de Imagens -------------------------------
+
+const galeria = document.querySelectorAll(".bicicleta-imagens img");
+const galeriaContainer = document.querySelector(".bicicleta-imagens");
+
+function trocarImagem(e) {
+  const img = e.currentTarget;
+  //verifica o tamanho da tela com matchMedia e com matches retorna booleano
+  const media = matchMedia("(min-width: 935px)").matches;
+  if (media) {
+    //deixa o item em primeiro da lista na organização do html
+    galeriaContainer.prepend(img);
+  }
+}
+
+function eventosGaleria(img) {
+  img.addEventListener("click", trocarImagem);
+}
+
+galeria.forEach(eventosGaleria);
